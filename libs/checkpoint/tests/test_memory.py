@@ -268,7 +268,10 @@ class TestMemorySaver:
 
         # before= should return only checkpoints older than the referenced checkpoint
         search_results_before = [
-            c async for c in self.memory_saver.alist(config_thread, before=config_after_cp2)
+            c
+            async for c in self.memory_saver.alist(
+                config_thread, before=config_after_cp2
+            )
         ]
         assert len(search_results_before) == 1
         assert (
